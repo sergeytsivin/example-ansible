@@ -1,0 +1,12 @@
+---
+
+# This is a generic library role
+# Actual values for library name, deploy source and tag should be passed via role parameters
+
+library_name:
+library_deploy_tag: master
+library_deploy_src:
+library_deploy_path: "{{ path_releases }}"
+library_deploy_dest: "{{ library_deploy_path }}/{{ library_deploy_tag }}"
+library_deploy_current: "{{ library_deploy_path }}/current"
+

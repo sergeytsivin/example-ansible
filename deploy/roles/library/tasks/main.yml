@@ -1,0 +1,21 @@
+---
+
+# This is a generic library role
+# This role only checks out and links the library but has no provision for creating folders and files
+# If your needs go beyond simple checkout, please create a custom role.
+
+- name: checkout {{ library_name }} lib
+  git:
+    dest: "{{ library_deploy_dest }}"
+    repo: "{{ library_deploy_src }}"
+    version: "{{ library_deploy_tag }}"
+    accept_hostkey: true
+  tags:
+    - install
+
+- name: schedule linking {{ library_name }} lib
+  command: /bin/true
+  notify:
+    - link {{ library_name }}
+  tags:
+    - link

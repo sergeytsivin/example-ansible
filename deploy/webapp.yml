@@ -1,0 +1,18 @@
+---
+# Installs, configures and links the library
+
+- hosts: webapp
+  any_errors_fatal: true
+
+  pre_tasks:
+    - name: make sure shared directories exist
+      file: dest={{ item }} state=directory
+      with_items:
+        - "{{ path_releases }}"
+        - "{{ path_shared }}"
+
+  roles:
+    - role: library
+      library_name: example
+      library_deploy_tag: "{{ deploy_tag }}"
+      library_deploy_src: https://github.com/sergeytsivin/example-lib.git

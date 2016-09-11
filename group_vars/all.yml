@@ -1,0 +1,7 @@
+---
+
+path_root:      "/vagrant"
+path_releases:  "{{ path_root }}/releases"
+path_shared:    "{{ path_root }}/shared"
+
+deploy_tag:     master
